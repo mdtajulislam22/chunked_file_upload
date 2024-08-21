@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunked File Upload in PHP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
+</head>
+
+<body>
+    <h1>Chunked File Upload</h1>
+
+    <form action="upload.php" class="dropzone" id="file-upload">
+        <div class="dz-message">
+            Drop files here or click to upload.
+        </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+    <script>
+        Dropzone.options.fileUpload = {
+            chunking: true,
+            forceChunking: true,
+            chunkSize: 2 * 1024 * 1024, // 2MB per chunk
+            retryChunks: true,
+            retryChunksLimit: 3,
+        };
+    </script>
+</body>
+
+</html>
